@@ -1,7 +1,7 @@
 {
     "name": "vyctory/venus-batch",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "script",
     "description": "Script for Venus Framework",
     "keywords": ["orm"],
@@ -18,6 +18,6 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "vyctory/venusframework": "*"
+        "vyctory/venusframework": ">=1.0.0"
     }
 }
