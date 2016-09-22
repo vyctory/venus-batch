@@ -61,10 +61,10 @@ class Generator extends Controller
 		}
 
 		$sActualDirectory = str_replace(DIRECTORY_SEPARATOR, '/', __DIR__);
-		$sPrivatePath = str_replace('/Batch/app/Controller', DIRECTORY_SEPARATOR.$sPortal.DIRECTORY_SEPARATOR.'app', $sActualDirectory).DIRECTORY_SEPARATOR;
-        $sPublicPath = str_replace('/Batch/app/Controller', DIRECTORY_SEPARATOR.$sPortal.DIRECTORY_SEPARATOR.'public', $sActualDirectory).DIRECTORY_SEPARATOR;
+		$sPrivatePath = str_replace('/vendor/vyctory/venus-batch/Batch/app/Controller', DIRECTORY_SEPARATOR.'bundles'.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.$sPortal.DIRECTORY_SEPARATOR.'app', $sActualDirectory).DIRECTORY_SEPARATOR;
+        $sPublicPath = str_replace('/vendor/vyctory/venus-batch/Batch/app/Controller', DIRECTORY_SEPARATOR.'bundles'.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.$sPortal.DIRECTORY_SEPARATOR.'public', $sActualDirectory).DIRECTORY_SEPARATOR;
 
-        if (!is_writable($sActualDirectory.'/../../../')) {
+        if (!is_writable($sActualDirectory.'/../../../../../../bundles/')) {
 
             echo 'The batch can`t create public folders for '.$sPortal.'! Please check the rights.';
             throw new \Exception('The batch can`t create public folders for '.$sPortal.'! Please check the rights.');

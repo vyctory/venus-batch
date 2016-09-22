@@ -18,6 +18,6 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "vyctory/venusframework": ">=1.0.0"
+        "vyctory/venusframework": "*"
     }
 }
