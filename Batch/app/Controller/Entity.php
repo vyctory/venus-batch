@@ -52,7 +52,6 @@ class Entity extends Controller
 	public function runScaffolding(array $aOptions = array())
 	{
 	    if (!isset($aOptions['p'])) { $aOptions['p'] = 'Batch'; }
-	    
 	    if (!isset($aOptions['b'])) { $aOptions['b'] = json_encode(Config::get('Db', $aOptions['p'])); }
 
 	    $baseFolder =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.
