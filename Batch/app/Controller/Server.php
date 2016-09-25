@@ -2,7 +2,7 @@
 
 namespace Batch\Controller;
 
-use \Venus\lib\Bash as Bash;
+use \VenusBash\Bash as Bash;
 use \Batch\common\Controller as Controller;
 
 class Server extends Controller

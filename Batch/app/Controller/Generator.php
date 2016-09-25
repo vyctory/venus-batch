@@ -3,8 +3,6 @@
 /**
  * Batch that generate files and folders
  *
- * @category  	Batch
- * @package   	Batch\Controller
  * @author    	Judicaël Paquet <judicael.paquet@gmail.com>
  * @copyright 	Copyright (c) 2013-2014 PAQUET Judicaël FR Inc. (https://github.com/vyctory)
  * @license   	https://github.com/vyctory/venus-batch/blob/master/LICENSE.md Tout droit réservé à PAQUET Judicaël
@@ -21,20 +19,11 @@
 namespace Batch\Controller;
 
 use \Batch\common\Controller as Controller;
-use \Venus\lib\Bash;
+use \VenusBash\Bash;
 
 /**
- * Batch that generate files and folders
- *
- * @category  	Batch
- * @package   	Batch\Controller
- * @author    	Judicaël Paquet <judicael.paquet@gmail.com>
- * @copyright 	Copyright (c) 2013-2014 PAQUET Judicaël FR Inc. (https://github.com/vyctory)
- * @license   	https://github.com/vyctory/venus-batch/blob/master/LICENSE.md Tout droit réservé à PAQUET Judicaël
- * @version   	Release: 2.0.0
- * @filesource	https://github.com/vyctory/venus-batch
- * @link      	https://github.com/vyctory
- * @since     	2.0.0
+ * Class Generator
+ * @package Batch\Controller
  */
 class Generator extends Controller
 {

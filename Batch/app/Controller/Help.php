@@ -4,8 +4,12 @@ namespace Batch\Controller;
 
 use \Batch\common\Controller as Controller;
 use \Venus\core\Config;
-use \Venus\lib\Bash;
+use \VenusBash\Bash;
 
+/**
+ * Class Help
+ * @package Batch\Controller
+ */
 class Help extends Controller
 {
     /**

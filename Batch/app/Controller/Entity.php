@@ -53,14 +53,15 @@ class Entity extends Controller
 	{
 	    if (!isset($aOptions['p'])) { $aOptions['p'] = 'Batch'; }
 	    if (!isset($aOptions['b'])) { $aOptions['b'] = json_encode(Config::get('Db', $aOptions['p'])); }
+        if (!isset($aOptions['o'])) { $aOptions['o'] = Config::get('Db', $aOptions['p'], false, true); }
 
 	    $baseFolder =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.
             DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'bundles'.
             DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR;
 	    $aOptions['g'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Entity'.DIRECTORY_SEPARATOR;
 	    $aOptions['h'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Model'.DIRECTORY_SEPARATOR;
+
 	    if (!defined('ENTITY_NAMESPACE')) { define('ENTITY_NAMESPACE', '\Venus\src\\'.$aOptions['p'].'\Entity'); }
-	    
 	    if (!defined('MODEL_NAMESPACE')) { define('MODEL_NAMESPACE', '\Venus\src\\'.$aOptions['p'].'\Model'); }
 	    
 	    $oBatch = new BatchEntity;
