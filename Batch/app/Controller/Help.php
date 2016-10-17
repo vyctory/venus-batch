@@ -29,7 +29,7 @@ class Help extends Controller
      */
     public function load(array $options = array())
     {
-        $BatchConf = Config::get('Route')->batch->script;
+        $BatchConf = Config::get('route')->batch->script;
 
         echo "\n\n";
         echo Bash::setBackground("                                                                            ", 'red');
@@ -58,7 +58,7 @@ class Help extends Controller
      */
     public function search(array $options = array())
     {
-        $BatchConf = Config::get('Route')->batch->script;
+        $BatchConf = Config::get('route')->batch->script;
 
         echo "\n\n";
         echo Bash::setBackground("                                                                            ", 'red');

@@ -1,7 +1,7 @@
 {
     "name": "vyctory/venus-batch",
     "license": "MIT",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "type": "script",
     "description": "Script for Venus Framework",
     "keywords": ["orm"],

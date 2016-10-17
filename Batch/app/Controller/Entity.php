@@ -52,8 +52,14 @@ class Entity extends Controller
 	public function runScaffolding(array $aOptions = array())
 	{
 	    if (!isset($aOptions['p'])) { $aOptions['p'] = 'Batch'; }
-	    if (!isset($aOptions['b'])) { $aOptions['b'] = json_encode(Config::get('Db', $aOptions['p'])); }
-        if (!isset($aOptions['o'])) { $aOptions['o'] = Config::get('Db', $aOptions['p'], false, true); }
+
+	    if (!isset($aOptions['b'])) {
+            $nameConnection = Config::get('default_connection');
+            $configurationDb = new \stdClass();
+            $configurationDb->configuration = Config::get('database')->$nameConnection;
+            $configurationDb->configuration->tables = Config::get('tables');
+	        $aOptions['b'] = json_encode($configurationDb);
+	    }
 
 	    $baseFolder =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.
             DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'bundles'.
@@ -61,12 +67,43 @@ class Entity extends Controller
 	    $aOptions['g'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Entity'.DIRECTORY_SEPARATOR;
 	    $aOptions['h'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Model'.DIRECTORY_SEPARATOR;
 
+
+        if (!isset($aOptions['o'])) {
+            $aOptions['o'] = $baseFolder.'..'.DIRECTORY_SEPARATOR.'conf'.DIRECTORY_SEPARATOR.'common'.DIRECTORY_SEPARATOR.'db.json';
+        }
+
 	    if (!defined('ENTITY_NAMESPACE')) { define('ENTITY_NAMESPACE', '\Venus\src\\'.$aOptions['p'].'\Entity'); }
 	    if (!defined('MODEL_NAMESPACE')) { define('MODEL_NAMESPACE', '\Venus\src\\'.$aOptions['p'].'\Model'); }
 	    
 	    $oBatch = new BatchEntity;
 	    $oBatch->runScaffolding($aOptions);
 	}
+
+    /**
+     * run the batch to create entity
+     * @tutorial bin/console scaffolding
+     *
+     * @access public
+     * @param  array $aOptions options of script
+     * @return void
+     */
+    public function scaffolding(array $aOptions = array())
+    {
+        if (!isset($aOptions['p'])) { $aOptions['p'] = 'Batch'; }
+
+        $baseFolder =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.
+            DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'bundles'.
+            DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR;
+
+        $aOptions['g'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Entity'.DIRECTORY_SEPARATOR;
+        $aOptions['h'] = $baseFolder.$aOptions['p'].DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Model'.DIRECTORY_SEPARATOR;
+        $aOptions['f'] = $baseFolder.'..'.DIRECTORY_SEPARATOR.'conf'.DIRECTORY_SEPARATOR.'common'.DIRECTORY_SEPARATOR.'db.json';
+        $aOptions['e'] =  '\Venus\src\\'.$aOptions['p'].'\Entity';
+        $aOptions['m'] =  '\Venus\src\\'.$aOptions['p'].'\Model';
+
+        $oBatch = new BatchEntity;
+        $oBatch->scaffolding($aOptions);
+    }
 
     /**
      * run the batch to create entity

@@ -35,14 +35,14 @@ class Plugin extends Controller
 	public function install(array $aOptions = array())
 	{
 	    $sFile = file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'conf'.DIRECTORY_SEPARATOR.'Plugins.conf');
-	    $aPlugins = json_decode($sFile);
+	    $aPlugins = PLUGINS;
 	    
 	    if (isset($aOptions['p'])) {
 	        
 	        define('CREATE_PORTAL', $aOptions['p']);
 	    }
 	    
-	    foreach ($aPlugins->list as $sPluginName) {
+	    foreach ($aPlugins as $sPluginName) {
 	        
 	        $sClassName = 'Venus\src\plugins\\'.$sPluginName.'\Controller\\'.$sPluginName;
 	        $oPlugin = new $sClassName;
